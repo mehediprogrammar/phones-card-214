@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import { Link } from "react-router-dom";
 
 const PhonesCard = ({phone}) => {
@@ -26,7 +27,7 @@ const PhonesCard = ({phone}) => {
             </p>
           </div>
           <p className="block font-sans text-sm font-normal leading-normal text-gray-700 antialiased opacity-75">
-               {rating}
+      
           </p>
         </div>
         <div className="p-6 pt-0">

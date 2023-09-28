@@ -8,7 +8,8 @@ const PhoneCard = ({phone}) => {
          const addedFavoritesArray = [];
          
        const favoritesItems = JSON.parse(localStorage.getItem('favorites'))
-        if(!favoritesItems){
+        
+       if(!favoritesItems){
           addedFavoritesArray.push(phone);
           localStorage.setItem('favorites',JSON.stringify(addedFavoritesArray))
           swal("Good job!", "product added!", "success")
@@ -30,7 +31,7 @@ const PhoneCard = ({phone}) => {
     }
 
     return (
-        <div className="text-xl font-bold justify-center items-center flex h-screen">
+        <div className="text-xl font-bold justify-center items-center flex my-10">
         <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
           <div className="relative m-0 w-2/5 shrink-0 overflow-hidden rounded-xl rounded-r-none bg-white bg-clip-border text-gray-700">
             <img
