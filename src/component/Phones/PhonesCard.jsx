@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const PhonesCard = ({phone}) => {
     const {id, image, phone_name, brand_name, price, rating} = phone;
 
-    console.log(phone);
+   
   return (
     <div>
       <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">

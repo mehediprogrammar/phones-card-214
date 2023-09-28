@@ -1,7 +1,34 @@
+import swal from "sweetalert";
 
 
 const PhoneCard = ({phone}) => {
-    const {id, image, phone_name, brand_name, price, rating} = phone;
+    const {id, image, phone_name, brand_name, price, } = phone;
+    
+    const handleFavorites = () =>{
+         const addedFavoritesArray = [];
+         
+       const favoritesItems = JSON.parse(localStorage.getItem('favorites'))
+        if(!favoritesItems){
+          addedFavoritesArray.push(phone);
+          localStorage.setItem('favorites',JSON.stringify(addedFavoritesArray))
+          swal("Good job!", "product added!", "success")
+        } 
+         else{
+              const isExites = favoritesItems.find((phone) => phone.id === id)
+              if( !isExites) {
+                addedFavoritesArray.push(...favoritesItems,phone)
+                localStorage.setItem('favorites',JSON.stringify(addedFavoritesArray))
+                swal("Good job!", "product added!", "success")
+              }
+             else{
+              swal("Error!", "not product added!", "success")
+             }
+            
+        }
+       
+          
+    }
+
     return (
         <div className="text-xl font-bold justify-center items-center flex h-screen">
         <div className="relative flex w-full max-w-[48rem] flex-row rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
@@ -23,11 +50,11 @@ const PhoneCard = ({phone}) => {
              ${price}
             </p>
             <a className="inline-block" href="#">
-              <button
+              <button onClick={handleFavorites}
                 className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500 transition-all hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
-                Learn More
+                Add Favorites
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
